@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { usePortfolio } from "../contexts/PortfolioContext";
-import Navbar from "../components/Navbar";
 
 export default function Admin() {
   const {
@@ -30,7 +29,13 @@ export default function Admin() {
   const [editProjectId, setEditProjectId] = useState(null);
 
   function handleLogin() {
-    if (credentials.username === "admin" && credentials.password === "pass") {
+    const storedUsername = process.env.NEXT_PUBLIC_ADMIN_USERNAME;
+    const storedPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+
+    if (
+      credentials.username === storedUsername &&
+      credentials.password === storedPassword
+    ) {
       setLoggedIn(true);
     } else {
       alert("Invalid login");
@@ -97,14 +102,13 @@ export default function Admin() {
 
   if (!loggedIn) {
     return (
-      <div>
-        <Navbar />
+      <div className="min-h-screen w-full">
         <div className="p-8">
-          <h2 className="font-bold text-2xl">Login to Admin</h2>
+          <h2 className="font-bold text-3xl my-8">Log in to Admin Page</h2>
           <input
             type="text"
             placeholder="Username"
-            className="mt-2 p-2 border"
+            className="mt-2 p-2 rounded-md border"
             value={credentials.username}
             onChange={(e) =>
               setCredentials({ ...credentials, username: e.target.value })
@@ -113,7 +117,7 @@ export default function Admin() {
           <input
             type="password"
             placeholder="Password"
-            className="mt-2 ml-2 p-2 border"
+            className="mt-2 ml-2 p-2 rounded-md border"
             value={credentials.password}
             onChange={(e) =>
               setCredentials({ ...credentials, password: e.target.value })
@@ -121,7 +125,7 @@ export default function Admin() {
           />
           <button
             onClick={handleLogin}
-            className="mt-4 ml-2 p-2 bg-blue-500 text-white"
+            className="mt-4 ml-2 p-2 rounded-md bg-indigo-500 text-white font-bold"
           >
             Login
           </button>
@@ -132,7 +136,6 @@ export default function Admin() {
 
   return (
     <div>
-      <Navbar />
       <div container className="p-20">
         <h2 className="text-4xl font-bold text-center mb-10">
           Admin Dashboard

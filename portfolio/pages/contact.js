@@ -1,26 +1,47 @@
+import Hero from "@/components/Hero";
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Contact = () => {
   return (
     <div className="">
-      <Navbar />
+      <Hero />
       <div style={styles.container}>
-        <h1 className="font-bold text-3xl mb-10">Contact Me</h1>
-
         <div style={styles.contactInfo}>
-          <h2 className="font-bold text-xl mb-4">Get in Touch</h2>
-          <p className="mb-2">
+          <h2 className="font-bold text-3xl mb-4">Get in Touch</h2>
+          <p className="mb-4 text-xl">
             If you would like to work together or have any questions, feel free
-            to reach out to me!
+            to reach out to me using the information below.
           </p>
-          <p style={styles.email}>Email: your.email@example.com</p>
-          <p style={styles.phone}>Phone: (123) 456-7890</p>
+          <p style={styles.email}>Email: sbackeholt@gmail.com</p>
+          <div className="">
+            <a
+              href="https://github.com/SofiaSyntax"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl hover:text-gray-400 flex items-center"
+            >
+              View my GitHub
+              <FaGithub className="ml-2" />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/sofia-backeholt/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl hover:text-gray-400 flex items-center"
+            >
+              {" "}
+              Connect on LinkedIn
+              <FaLinkedin className="ml-2" />
+            </a>
+          </div>
+
+          {/* <p style={styles.phone}>Phone: (123) 456-7890</p>  */}
         </div>
 
-        <div style={styles.contactForm}>
+        {/* <div style={styles.contactForm}>
           <h2 className="text-2xl font-bold mb-4">Contact Form</h2>
           <form action="your-form-handler-url" method="POST">
             <label htmlFor="name">Name:</label>
@@ -56,16 +77,15 @@ const Contact = () => {
               style={styles.submitButton}
             />
           </form>
-        </div>
+        </div> */}
       </div>
-      <Footer />
     </div>
   );
 };
 
 const styles = {
   container: {
-    width: "80%",
+    width: "60%",
     margin: "0 auto",
     padding: "50px 0",
   },
@@ -78,6 +98,7 @@ const styles = {
   },
   email: {
     fontWeight: "bold",
+    fontSize: "18px",
     color: "#333",
   },
   phone: {
@@ -108,13 +129,14 @@ const styles = {
     boxSizing: "border-box",
   },
   submitButton: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#3f51b5",
     color: "white",
     border: "none",
     cursor: "pointer",
     fontSize: "16px",
     padding: "10px 20px",
     borderRadius: "4px",
+    fontWeight: "bold",
   },
 };
 

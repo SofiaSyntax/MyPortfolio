@@ -7,6 +7,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        jetbrains: ['"JetBrains Mono"', "monospace"],
+        worksans: ['"Work Sans"', "sans-serif"],
+      },
+
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
