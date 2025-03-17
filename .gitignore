@@ -1,1 +1,4 @@
-portfolio/node_modules
+portfolio/node_modules/**
+.env
+portfolio/.next
+.DS_Store
