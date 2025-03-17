@@ -7,51 +7,98 @@ export function usePortfolio() {
 }
 
 export function PortfolioProvider({ children }) {
-  const [projects, setProjects] = useState([]);
-  const [techSkills, setTechSkills] = useState([]);
+  // Hardcoded Tech Skills and Projects
+  const techSkillsData = [
+    "JavaScript",
+    "React",
+    "CSS",
+    "HTML",
+    "TailwindCSS",
+    "GitHub",
+    "WCAG",
+    "Next.js",
+    "Figma",
+  ];
 
-  useEffect(() => {
-    const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
-    const storedTechSkills =
-      JSON.parse(localStorage.getItem("techSkills")) || [];
+  const projectsData = [
+    {
+      id: 1,
+      title: "Pokémon Card Site",
+      description:
+        "A user can view cards and save cards to their collection. This was a group project that utilized fetching data from an API",
+      tech: ["React", "Next.js", "TailwindCSS"],
+      image: "assets/Rectangle1.png",
+      link: "https://pokemon-one-bay.vercel.app/",
+    },
+    {
+      id: 2,
+      title: "Zoom Redesign",
+      description: "Creating a simplified version of the Zoom homepage.",
+      tech: ["JavaScript", "HTML", "CSS", "Vite"],
+      image: "assets/Rectangle2.png",
+      link: "https://zoom-redesign-mu.vercel.app/",
+    },
+    {
+      id: 3,
+      title: "Todo-list",
+      description:
+        "A simple Todo-list where you can add, complete and remove todos.",
+      tech: ["JavaScript", "HTML", "TailwindCSS", "React"],
+      image: "assets/Rectangle3.png",
+      link: "https://react-todo-list-i9us.vercel.app/",
+    },
+  ];
 
-    setProjects(storedProjects);
-    setTechSkills(storedTechSkills);
-  }, []);
+  const [projects, setProjects] = useState(projectsData);
+  const [techSkills, setTechSkills] = useState(techSkillsData);
 
-  useEffect(() => {
-    localStorage.setItem("projects", JSON.stringify(projects));
-    localStorage.setItem("techSkills", JSON.stringify(techSkills));
-  }, [projects, techSkills]);
+  // For using local storage
 
-  const addProject = (project) => setProjects([...projects, project]);
+  // const [projects, setProjects] = useState([]);
+  // const [techSkills, setTechSkills] = useState([]);
 
-  const editProject = (id, updatedProject) => {
-    setProjects((prevProjects) =>
-      prevProjects.map((project) =>
-        project.id === id ? { ...project, ...updatedProject } : project
-      )
-    );
-  };
+  // useEffect(() => {
+  //   const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+  //   const storedTechSkills =
+  //     JSON.parse(localStorage.getItem("techSkills")) || [];
 
-  const deleteProject = (id) => {
-    setProjects(projects.filter((project) => project.id !== id));
-  };
+  //   setProjects(storedProjects);
+  //   setTechSkills(storedTechSkills);
+  // }, []);
 
-  const addTechSkill = (skill) => setTechSkills([...techSkills, skill]);
-  const deleteTechSkill = (skill) =>
-    setTechSkills(techSkills.filter((s) => s !== skill));
+  // useEffect(() => {
+  //   localStorage.setItem("projects", JSON.stringify(projects));
+  //   localStorage.setItem("techSkills", JSON.stringify(techSkills));
+  // }, [projects, techSkills]);
+
+  // const addProject = (project) => setProjects([...projects, project]);
+
+  // const editProject = (id, updatedProject) => {
+  //   setProjects((prevProjects) =>
+  //     prevProjects.map((project) =>
+  //       project.id === id ? { ...project, ...updatedProject } : project
+  //     )
+  //   );
+  // };
+
+  // const deleteProject = (id) => {
+  //   setProjects(projects.filter((project) => project.id !== id));
+  // };
+
+  // const addTechSkill = (skill) => setTechSkills([...techSkills, skill]);
+  // const deleteTechSkill = (skill) =>
+  //   setTechSkills(techSkills.filter((s) => s !== skill));
 
   return (
     <PortfolioContext.Provider
       value={{
         projects,
-        addProject,
-        editProject,
-        deleteProject,
+        // addProject,
+        // editProject,
+        // deleteProject,
         techSkills,
-        addTechSkill,
-        deleteTechSkill,
+        // addTechSkill,
+        // deleteTechSkill,
       }}
     >
       {children}
